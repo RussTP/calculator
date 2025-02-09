@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#container {
+box-sizing: border-box;
+display: flex;
+flex: 1, 1, 0;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+border: 1px solid black;
+border-radius: 8px;
+padding: 10px;
+gap: 4px;
+margin-top: 100px;
+width: 250px;
+min-width: 250px;
+height: auto;
+background-color: rgb(49, 49, 49);
+
+
+}
+
+#display {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 30px;
+    color: white;
+    border: 2px solid rgb(124, 124, 124);
+    border-radius: 5px;
+    width: 210px;
+    height: 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    overflow: hidden;
+    white-space: normal;
+}
+
+
+button {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1, 1, 0;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  background-color: rgb(124, 124, 124);
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.clear {
+    width: 160px;
+}
+
+#equalBtn {
+    background-color: rgb(235, 128, 57);
+}
+
+.operator {
+    background-color: rgb(77, 74, 74);
+}
+
+button:hover {
+    background-color:  rgb(77, 74, 74);
+}
+
+.operator:hover {
+    background-color: rgb(124, 124, 124);
+}
+
+#equalBtn:hover {
+    background-color: rgb(243, 156, 98);
+}

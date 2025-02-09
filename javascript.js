@@ -1,6 +1,7 @@
-let num1 = 10;
-let num2 = 5;
-let operator = "/";
+let num1 = "";
+let operator = "";
+let num2 = "";
+
 
 function add(a, b) {
 return a + b;
@@ -38,4 +39,22 @@ function operate(operator, a, b) {
 
 console.log(operate(operator, num1, num2))
 
+const buttons = document.querySelectorAll(".digit");
+const display= document.querySelector("#display");
+const clearButton = document.querySelector(".clear");
+
+const buttonInput = [];
+
+function handleClick(e) {
+display.textContent += e.target.value;
+buttonInput.push(e.target.value);
+console.log(buttonInput.join(""));
+}
+buttons.forEach(button => {
+    button.addEventListener("click", handleClick);
+});
+
+clearButton.addEventListener("click", () => {
+    display.textContent = "";
+});
 
