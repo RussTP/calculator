@@ -4,10 +4,13 @@ const operatorButtons = document.querySelectorAll(".operator");
 const display= document.querySelector("#display");
 const clearButton = document.querySelector(".clear");
 const equalsButton = document.querySelector("#equals");
+const decimalButton = document.querySelector("#decBtn");
+const backspaceButton = document.querySelector(".backspace");
 
 let num1 = "";
 let operator = "";
 let num2 = "";
+let backspace = "";
 let resultDisplayed = false;
 
 //math logic, addition, subtraction, multiplication, division
@@ -31,7 +34,7 @@ function divide(a, b) {
 return a / b;
 }
 
-//math input logic for user  
+//math operator logic  
 function operate(operator, a, b) {
     a = parseFloat(a);
     b = parseFloat(b);
@@ -52,8 +55,7 @@ function operate(operator, a, b) {
 
 
 
-let buttonInput = "";
-//digit  display & store values clicked function 
+//calculator operations
 function handleDigitClick(e) {
 const value = e.target.value;
 
@@ -81,8 +83,25 @@ function handleOperatorClick(e) {
     display.textContent = num1 + " " + operator;
 }
 
+function handleDecimalClick() {
+    if (resultDisplayed) {
+        num1 = "";
+        num2 = "";
+        operator = "";
+        resultDisplayed = false;
+    }
+    if (!operator && !num1.includes(".")) {
+        num1 += ".";
+        display.textContent = num1;
+    }
+    else if (operator && !num2.includes(".")) {
+        num2 += ".";
+        display.textContent = num1 + " " + operator + " " + num2;
+    }
+}
 
-function equals() {
+
+function handleEqualsClick() {
     if (num1 && operator && num2) {
         const result = operate(operator, num1, num2);
         display.textContent = "";
@@ -95,14 +114,39 @@ function equals() {
         }
     }
 
-function clearDisplay() {
+function handleClearDisplayClick() {
     num1 = "";
     operator = "";
     num2 = "";
     display.textContent = "";
     resultDisplayed = false;
 }
+
+function handleBackspaceClick() {
+if (resultDisplayed) {
+    num1 = "";
+    num2 = "";
+    operator = "";
+    decimal = "";
+    resultDisplayed = false;
+    display.textContent = "";
+} else if (num2) {
+    num2 = num2.slice(0, -1);
+    display.textContent = num1 + " " + operator + " " + num2;
+}else if (operator) {
+    operator = "";
+    display.textContent = num1;
+} else {
+    num1 = num1.slice(0, -1);
+    display.textContent = num1;
+}
+}
+
+
+//event listeners for digits and operators 
 digitButtons.forEach(button => button.addEventListener("click", handleDigitClick));
 operatorButtons.forEach(button => button.addEventListener("click", handleOperatorClick));
-equalsButton.addEventListener("click", equals);
-clearButton.addEventListener("click", clearDisplay);
+equalsButton.addEventListener("click", handleEqualsClick);
+clearButton.addEventListener("click", handleClearDisplayClick);
+decimalButton.addEventListener("click", handleDecimalClick);
+backspaceButton.addEventListener("click", handleBackspaceClick);
